@@ -164,7 +164,7 @@ function App() {
             <div className="flex-shrink-0">
               <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-xl border-4 border-white">
                 <img 
-                  src="/../avavtar.png" 
+                  src="../avavtar.png" 
                   alt="Dương Thành Lộc"
                   className="w-full h-full object-cover"
                   onError={(e) => {
