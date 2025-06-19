@@ -162,8 +162,22 @@ function App() {
             </div>
             
             <div className="flex-shrink-0">
-              <div className="w-64 h-64 lg:w-80 lg:h-80 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center shadow-xl">
-                <User size={120} className="text-blue-600" />
+              <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-xl border-4 border-white">
+                <img 
+                  src="/images/profile.jpg" 
+                  alt="Dương Thành Lộc"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    // Fallback to icon if image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.className = "w-64 h-64 lg:w-80 lg:h-80 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full flex items-center justify-center shadow-xl";
+                      parent.innerHTML = '<svg class="text-blue-600" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
+                    }
+                  }}
+                />
               </div>
             </div>
           </div>
