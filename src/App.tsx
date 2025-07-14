@@ -74,20 +74,6 @@ function App() {
       techStack: ['Python', 'OpenCV', 'CNN', 'TensorFlow', 'Computer Vision'],
       githubUrl: 'https://github.com/loki12ne/eye-detect-drowness',
       type: 'Machine Learning'
-    },
-    {
-      name: 'CNN Image Classification',
-      description: 'Deep learning project implementing Convolutional Neural Networks for image classification with high accuracy performance.',
-      techStack: ['Python', 'TensorFlow', 'Keras', 'CNN', 'Deep Learning'],
-      githubUrl: '#',
-      type: 'Deep Learning'
-    },
-    {
-      name: 'Machine Learning Portfolio',
-      description: 'Collection of machine learning algorithms and models including regression, classification, and clustering implementations.',
-      techStack: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib'],
-      githubUrl: '#',
-      type: 'Machine Learning'
     }
   ];
 
