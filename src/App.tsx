@@ -12,12 +12,15 @@ import {
   Menu,
   X,
   Download,
-  FileText
+  FileText,
+  Eye,
+  Maximize2
 } from 'lucide-react';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showCVPreview, setShowCVPreview] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -394,7 +397,14 @@ function App() {
                 data science and artificial intelligence.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <button 
+                  onClick={() => setShowCVPreview(!showCVPreview)}
+                  className="inline-flex items-center justify-center px-8 py-4 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+                >
+                  <Eye size={20} className="mr-3" />
+                  {showCVPreview ? 'Hide Preview' : 'Preview CV'}
+                </button>
                 <a 
                   href="/cv.pdf"
                   download="Duong_Thanh_Loc_CV.pdf"
@@ -409,10 +419,47 @@ function App() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-colors duration-200"
                 >
-                  <ExternalLink size={20} className="mr-3" />
-                  View Online
+                  <Maximize2 size={20} className="mr-3" />
+                  Open in New Tab
                 </a>
               </div>
+              
+              {/* CV Preview */}
+              {showCVPreview && (
+                <div className="mt-8">
+                  <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div className="bg-gray-100 px-6 py-3 border-b flex items-center justify-between">
+                      <h4 className="font-semibold text-gray-800">CV Preview</h4>
+                      <button
+                        onClick={() => setShowCVPreview(false)}
+                        className="text-gray-500 hover:text-gray-700 transition-colors"
+                      >
+                        <X size={20} />
+                      </button>
+                    </div>
+                    <div className="p-4">
+                      <iframe
+                        src="/cv.pdf"
+                        className="w-full h-96 md:h-[600px] border-0 rounded"
+                        title="CV Preview"
+                        onError={() => {
+                          // Fallback if PDF can't be displayed
+                          const iframe = document.querySelector('iframe[title="CV Preview"]') as HTMLIFrameElement;
+                          if (iframe && iframe.parentElement) {
+                            iframe.parentElement.innerHTML = `
+                              <div class="flex flex-col items-center justify-center h-96 text-gray-500">
+                                <FileText size="48" class="mb-4" />
+                                <p class="text-lg font-medium mb-2">Preview not available</p>
+                                <p class="text-sm text-center">Your browser doesn't support PDF preview.<br/>Please download the file to view it.</p>
+                              </div>
+                            `;
+                          }
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )}
               
               <div className="mt-8 text-sm text-gray-500">
                 <p>Last updated: January 2025</p>
