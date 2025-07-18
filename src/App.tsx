@@ -10,7 +10,9 @@ import {
   Briefcase,
   ChevronDown,
   Menu,
-  X
+  X,
+  Download,
+  FileText
 } from 'lucide-react';
 
 function App() {
@@ -50,6 +52,7 @@ function App() {
     { id: 'about', label: 'About' },
     { id: 'experience', label: 'Experience' },
     { id: 'projects', label: 'Projects' },
+    { id: 'cv', label: 'CV' },
     { id: 'contact', label: 'Contact' }
   ];
 
@@ -73,6 +76,20 @@ function App() {
       description: 'Computer vision system using CNN to detect driver drowsiness in real-time through eye monitoring and facial analysis.',
       techStack: ['Python', 'OpenCV', 'CNN', 'TensorFlow', 'Computer Vision'],
       githubUrl: 'https://github.com/loki12ne/eye-detect-drowness',
+      type: 'Machine Learning'
+    },
+    {
+      name: 'CNN Image Classification',
+      description: 'Deep learning project implementing Convolutional Neural Networks for image classification with high accuracy performance.',
+      techStack: ['Python', 'TensorFlow', 'Keras', 'CNN', 'Deep Learning'],
+      githubUrl: '#',
+      type: 'Deep Learning'
+    },
+    {
+      name: 'Machine Learning Portfolio',
+      description: 'Collection of machine learning algorithms and models including regression, classification, and clustering implementations.',
+      techStack: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib'],
+      githubUrl: '#',
       type: 'Machine Learning'
     }
   ];
@@ -174,9 +191,17 @@ function App() {
                 >
                   View My Work
                 </button>
+                <a 
+                  href="/cv.pdf"
+                  download="Duong_Thanh_Loc_CV.pdf"
+                  className="inline-flex items-center justify-center px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-colors duration-200"
+                >
+                  <Download size={18} className="mr-2" />
+                  Download CV
+                </a>
                 <button 
                   onClick={() => scrollToSection('contact')}
-                  className="px-8 py-3 border-2 border-blue-600 text-blue-600 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-colors duration-200"
+                  className="px-8 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200"
                 >
                   Get In Touch
                 </button>
@@ -347,6 +372,51 @@ function App() {
                   )}
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CV Section */}
+      <section id="cv" className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">Curriculum Vitae</h2>
+            <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
+              <div className="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <FileText className="text-blue-600" size={48} />
+              </div>
+              
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">My Resume</h3>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Download my complete CV to learn more about my educational background, 
+                technical skills, research projects, and professional experience in 
+                data science and artificial intelligence.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a 
+                  href="/cv.pdf"
+                  download="Duong_Thanh_Loc_CV.pdf"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+                >
+                  <Download size={20} className="mr-3" />
+                  Download CV (PDF)
+                </a>
+                <a 
+                  href="/cv.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-lg font-medium hover:bg-blue-600 hover:text-white transition-colors duration-200"
+                >
+                  <ExternalLink size={20} className="mr-3" />
+                  View Online
+                </a>
+              </div>
+              
+              <div className="mt-8 text-sm text-gray-500">
+                <p>Last updated: January 2025</p>
+              </div>
             </div>
           </div>
         </div>
